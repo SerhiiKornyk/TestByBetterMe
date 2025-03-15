@@ -8,8 +8,6 @@ interface MoviesRepository {
 
     suspend fun getMovies(): Result<List<Movie>>
 
-    suspend fun getMovie(id: Int): Result<Movie>
-
     fun observeLikedMovieIds(): Flow<List<Int>>
 
     suspend fun addMovieToFavorites(movieId: Int)

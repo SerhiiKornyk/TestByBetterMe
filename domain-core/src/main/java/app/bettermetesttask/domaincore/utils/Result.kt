@@ -22,4 +22,12 @@ sealed class Result<out T> {
             is Success<*> -> "Success[data= $data]"
             is Error -> "Error[throwable= $error]"
         }
+
+    override fun equals(other: Any?): Boolean {
+        return when (other) {
+            is Success<*> -> (this as Success).data == other.data
+            is Error -> (this as Error).error == other.error
+            else -> false
+        }
+    }
 }

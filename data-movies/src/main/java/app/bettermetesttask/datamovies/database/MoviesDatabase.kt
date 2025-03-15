@@ -12,4 +12,5 @@ const val DB_NAME = "movies_database.db"
 abstract class MoviesDatabase : RoomDatabase() {
 
     abstract fun getMoviesDao(): MoviesDao
+
 }

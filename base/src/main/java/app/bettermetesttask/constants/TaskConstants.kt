@@ -2,7 +2,6 @@ package app.bettermetesttask.constants
 
 enum class TaskVariance {
     COMPOSE,
-    XML,
 }
 
 /**
@@ -10,5 +9,5 @@ enum class TaskVariance {
  * while COMPOSE means that MoviesComposeFragment is used instead.
  */
 object TaskConstants {
-    val TASK_VARIANCE = TaskVariance.XML
+    val TASK_VARIANCE = TaskVariance.COMPOSE
 }
