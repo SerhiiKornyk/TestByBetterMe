@@ -14,6 +14,7 @@ class ObserveMoviesUseCase @Inject constructor(
 
     suspend operator fun invoke(): Flow<Result<List<Movie>>> {
         return when (val result = repository.getMovies()) {
+
             is Result.Success -> {
                 repository.observeLikedMovieIds()
                     .map { likedMoviesIds ->
