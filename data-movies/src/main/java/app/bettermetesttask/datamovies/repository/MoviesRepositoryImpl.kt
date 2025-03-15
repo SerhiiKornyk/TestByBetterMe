@@ -22,18 +22,21 @@ class MoviesRepositoryImpl @Inject constructor(
         if (!connectivityManager.isNetworkAvailable()) {
             return handleNoInternetState()
         }
-
-        return if (restStore.getMovies().isEmpty()) {
+        val remote = try {
+            restStore.getMovies()
+        } catch (e: Exception) {
+            emptyList()
+        }
+        return if (remote.isEmpty()) {
             handleRemoteEmptyState(false)
         } else {
             return Result.of {
-                val movies = restStore.getMovies()
-                val localMovies = movies.map { mapper.mapToLocal(it) }
+                val localMovies = remote.map { mapper.mapToLocal(it) }
 
                 localStore.saveMovies(
                     localMovies
                 )
-                movies
+                remote
             }
 
         }
