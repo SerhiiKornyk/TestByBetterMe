@@ -15,14 +15,8 @@ interface MoviesDao{
     @Query("SELECT * FROM MoviesTable")
     suspend fun selectMovies(): List<MovieEntity>
 
-    @Query("SELECT * FROM MoviesTable WHERE id = :id")
-    suspend fun selectMovieById(id: Int): List<MovieEntity>
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMovie(movie: MovieEntity)
-
-    @Update
-    suspend fun updateMovie(movie: MovieEntity)
 
     @Query("SELECT * FROM LikedMovieEntry")
     fun selectLikedEntries(): Flow<List<LikedMovieEntity>>
@@ -35,4 +29,7 @@ interface MoviesDao{
 
     @Query("DELETE FROM MoviesTable")
     suspend fun deleteMovies()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveMovies(movies: List<MovieEntity>)
 }

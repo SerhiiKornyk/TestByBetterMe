@@ -26,7 +26,8 @@ class HomeActivity : AppCompatActivity(R.layout.activity_main), HasAndroidInject
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.mainNavigationFragment) as NavHostFragment
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.mainNavigationFragment) as NavHostFragment
         navController = navHostFragment.navController
         navController.addOnDestinationChangedListener(navListener)
     }
@@ -49,14 +50,7 @@ class HomeActivity : AppCompatActivity(R.layout.activity_main), HasAndroidInject
 
     @Suppress("unused")
     private fun colorStatusBar(@IdRes fragmentId: Int) {
-        window.statusBarColor = when (fragmentId) {
-            R.id.moviesFragment -> {
-                ResourcesCompat.getColor(resources, R.color.white, theme)
-            }
-            else -> {
-                ResourcesCompat.getColor(resources, R.color.main_black, theme)
-            }
-        }
+        window.statusBarColor = ResourcesCompat.getColor(resources, R.color.main_black, theme)
     }
 
     private fun initNavListener(): NavController.OnDestinationChangedListener {

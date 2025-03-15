@@ -22,10 +22,6 @@ class HomeNavigatorImpl @Inject constructor(
                 TaskVariance.COMPOSE -> {
                     navController.get().navigate(R.id.action_show_compose_movies)
                 }
-
-                TaskVariance.XML -> {
-                    navController.get().navigate(R.id.action_show_movies)
-                }
             }
         }
     }
